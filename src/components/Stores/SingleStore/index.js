@@ -1,9 +1,12 @@
 import React, {useContext}  from "react";
 import StoreContext from "../../../context/Store/StoreContext";
+import { Link } from "react-router-dom"
 
 import { useParams } from "react-router-dom";
 
 export default function SingleStore() {
+
+    //ESTADO GLOBAL
     const ctx = useContext(StoreContext)
     const { singleStore, getStore } = ctx
 
@@ -12,7 +15,7 @@ export default function SingleStore() {
 
     return (
         <div>
-            Página individual de cada tienda
+            <h1> Página individual de cada tienda</h1>
 
             <button onClick={() => { getStore(id) }}>
                 Más info (tienda)

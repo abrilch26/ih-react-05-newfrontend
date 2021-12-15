@@ -31,55 +31,62 @@
 
     //3. FUNCIONES DE CAMBIO EN ESTADO GLOBAL
     const changeText = () => {
-        dispatch ({
-            type: "CHANGE_TEXT",
-            payload: "Estoy aprendiendo context y muriendo"
-        })
-    }
-
-    const getGuitars = async () => {
-
-        const res = await axiosClient.get("guitars/readall")
-        console.log ("Obteniendo guitarras...")
-
-        const list = res.data.data
-        
-        dispatch ({
-            type: "GET_GUITARS",
-            payload: list
-        })
-    }
-
-    const getGuitar = async (guitarId) => {
-		const res = await axiosClient.get(`guitars/readone/${guitarId}`)
-
-        const selectedGuitar = res.data.data
-		console.log(res)
-
-        dispatch({
-            type: "GET_GUITAR",
-            payload: selectedGuitar
-        })
+        dispatch({ // ESTE OBJETO SE LE CONOCE COMO ACTION
+			type: "CHANGE_TEXT",
+			payload: "Estoy aprendiendo Context sin morir." 		
+		})
 
 	}
 
+	const getGuitars = async () => {
+
+		const res = await axiosClient.get("guitars/readall")
+
+		console.log("Obteniendo guitarras...")
+		
+		const list = res.data.data
+
+		dispatch({
+			type: "GET_GUITARS",
+			payload: list
+		})
+
+	}
+
+	const getGuitar = async (guitarId) => {
+		
+		const res = await axiosClient.get(`guitars/readone/${guitarId}`)
+        const selectedGuitar = res.data.data
+
+		dispatch({
+			type: "GET_GUITAR",
+			payload: selectedGuitar
+		})
+	}
+
+	const createGuitar = async (form) => {
+
+		const res = await axiosClient.post("guitars/create", form)
+		console.log(res)
+	}
 
 
-    //4. RETORNO
-    return (
-        <GuitarContext.Provider
-            value={{ //value baja el estado inicial a uno nuev0
-                guitars: globalState.guitars,
-                hola: globalState.hola,
-                singleGuitar: globalState.singleGuitar,
-                changeText,
-                getGuitars,
-                getGuitar
-            }}
-        >
-            {props.children}
-        </GuitarContext.Provider>
-    )
+	// 4. RETORNO
+	return (
+		<GuitarContext.Provider
+			value={{
+				guitars: globalState.guitars,
+				hola: globalState.hola,
+				singleGuitar: globalState.singleGuitar,
+				changeText,
+				getGuitars,
+				getGuitar,
+				createGuitar
+			}}
+		>
+			{props.children}
+		</GuitarContext.Provider>
+	)
 
 }
 
