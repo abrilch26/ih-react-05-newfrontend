@@ -11,13 +11,13 @@ export default function Header() {
 							<img className="h-10 w-auto" src="https://cdn.worldvectorlogo.com/logos/ironhack-1.svg" alt="" />
 						</Link>
 						<div className="ml-10 space-x-8 lg:block">
-							<Link to="/guitarras" className="text-base font-medium text-white hover:text-indigo-50">
+							<Link to="/guitars" className="text-base font-medium text-white hover:text-indigo-50">
 								Guitarras
 							</Link>
-							<Link to="/tiendas" className="text-base font-medium text-white hover:text-indigo-50">
+							<Link to="/stores" className="text-base font-medium text-white hover:text-indigo-50">
 								Tiendas
 							</Link>
-							<Link to="/sobre-nosotros" className="text-base font-medium text-white hover:text-indigo-50">
+							<Link to="#" className="text-base font-medium text-white hover:text-indigo-50">
 								Sobre nosotros
 							</Link>
 						</div>
